@@ -188,7 +188,6 @@ def find_smd_reference(path_to_model):
     return smd_reference
 
 def get_materials(path_to_model):
-    basetexture_line = ''
     print("Analyzing .vmt files")
     files = os.listdir(os.path.dirname(path_to_model) + '\\')
     for i in files:
@@ -202,9 +201,9 @@ def get_materials(path_to_model):
                     list1.reverse()
                     for char in list1:
                         if(char == "\\" or char == "/"):
-                                break;
+                            break
                         if char != "\"" and char != " " and char != "\n":
-                            texture_name = char + texture_name;
+                            texture_name = char + texture_name
                     materialist[i[:len(i)-4]] = texture_name
     for i in materialist.values():
         print("Detected material: ", i)
