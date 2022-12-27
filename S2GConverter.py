@@ -282,7 +282,7 @@ def convert_model(path_to_model):
                 else:
                     print("WARNING! SMD data parsing error! It can cause some problems!")
                     print("Excepted: ", smd_file)
-                    pass
+                    continue
                 parts_amount = math.ceil(len(verticle_data) / MAX_TRIANGLES_CONST)
                 if parts_amount==0:
                     parts_amount = 1
