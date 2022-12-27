@@ -196,20 +196,16 @@ def get_materials(path_to_model):
             vmt_file = open(os.path.dirname(path_to_model) + '\\'+i, "r")
             lines = vmt_file.readlines()
             for j in lines:
+                texture_name = ''
                 if 'basetexture' in j.lower():
-                    texture_name = ''
-                    btx = j.split(' ')
-                    for p in range(1, len(btx)):
-                        basetexture_line = ''
-                        if 'basetexture' in btx[p-1] or 'basetexture' in btx[p-1].lower() or 'basetexture' in btx[p-1].upper():
-                            basetexture_line = btx[p]
-                            break
-                    for k in range(len(basetexture_line)-1, 0, -1):
-                        if basetexture_line[k]!='/' and basetexture_line[k]!='\\':
-                            texture_name = basetexture_line[k]+texture_name
-                        else:
-                            break
-                    texture_name=texture_name[:len(texture_name)-2]
+                    list1 = list(j.lower())
+                    list1.reverse()
+                    for char in list1:
+                        if(char == "\\" or char == "/"):
+                                break;
+                        if char != "\"" and char != " " and char != "\n":
+                            texture_name = char + texture_name;
+                    print(texture_name)
                     materialist[i[:len(i)-4]] = texture_name
     for i in materialist.values():
         print("Detected material: ", i)
