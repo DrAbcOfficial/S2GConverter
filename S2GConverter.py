@@ -7,7 +7,7 @@ import shutil
 from PIL import Image
 
 MAX_TRIANGLES_CONST = 500
-TEXTURE_SIZE_CONST = 256
+TEXTURE_SIZE_CONST = 1024
 materialist = {}
 
 def pathcheck(path_to_model):
@@ -205,7 +205,6 @@ def get_materials(path_to_model):
                                 break;
                         if char != "\"" and char != " " and char != "\n":
                             texture_name = char + texture_name;
-                    print(texture_name)
                     materialist[i[:len(i)-4]] = texture_name
     for i in materialist.values():
         print("Detected material: ", i)
